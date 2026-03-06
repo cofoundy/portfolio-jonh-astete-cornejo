@@ -1,0 +1,91 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section class="relative bg-[var(--color-primary-dark)] text-white overflow-hidden pt-16 lg:pt-0">
+  <!-- Subtle medical cross pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='26' y='10' width='8' height='40' fill='white'/%3E%3Crect x='10' y='26' width='40' height='8' fill='white'/%3E%3C/svg%3E\"); background-size: 60px 60px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+      <!-- Text content (3 cols) -->
+      <div class="lg:col-span-3 space-y-8">
+        <!-- Credential badges -->
+        <div class="hero-badge flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[var(--color-accent)]/20 text-[var(--color-accent)] border border-[var(--color-accent)]/30">
+            PhD Neurociencias
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/80 border border-white/20">
+            ORCID: 0000-0001-6225-6720
+          </span>
+        </div>
+
+        <div>
+          <h1 class="hero-name text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" style="font-family: 'DM Serif Display', serif;">
+            {siteConfig.name}
+          </h1>
+          <p class="hero-title mt-4 text-lg md:text-xl text-[var(--color-accent)] font-medium">
+            {siteConfig.title}
+          </p>
+        </div>
+
+        <p class="hero-tagline text-lg text-white/70 max-w-xl leading-relaxed">
+          {siteConfig.tagline}
+        </p>
+
+        <!-- Stats bar -->
+        <div class="hero-stats flex flex-wrap gap-8 pt-2">
+          {siteConfig.stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl md:text-4xl font-bold text-[var(--color-accent)]" style="font-family: 'DM Serif Display', serif;">
+                {stat.value}
+              </div>
+              <div class="text-xs text-white/50 mt-1 uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- CTAs -->
+        <div class="hero-cta flex flex-wrap gap-4">
+          <a
+            href="#contacto"
+            class="btn-hover inline-flex items-center px-6 py-3 bg-[var(--color-accent)] text-white font-semibold rounded-lg text-sm hover:bg-[var(--color-accent)]/90 transition-colors"
+          >
+            Contactar
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a
+            href="#publicaciones"
+            class="inline-flex items-center px-6 py-3 border border-white/20 text-white/80 font-medium rounded-lg text-sm hover:bg-white/5 transition-colors"
+          >
+            Ver publicaciones
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo (2 cols) -->
+      <div class="lg:col-span-2 flex justify-center lg:justify-end">
+        <div class="hero-photo relative">
+          <div class="w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+            <img
+              src="/profile.jpg"
+              alt={siteConfig.name}
+              class="w-full h-full object-cover object-top"
+              loading="eager"
+            />
+          </div>
+          <!-- Decorative accent bar -->
+          <div class="absolute -bottom-3 -right-3 w-20 h-1 bg-[var(--color-accent)] rounded-full"></div>
+          <div class="absolute -bottom-3 -right-3 w-1 h-20 bg-[var(--color-accent)] rounded-full"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shimmer separator -->
+  <div class="bar-shimmer h-1 w-full"></div>
+</section>

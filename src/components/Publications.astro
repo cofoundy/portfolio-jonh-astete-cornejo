@@ -1,0 +1,72 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="publicaciones" class="bg-[var(--color-surface)] py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-3">Investigación científica</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-primary-dark)]" style="font-family: 'DM Serif Display', serif;">
+        Publicaciones Destacadas
+      </h2>
+      <div class="w-16 h-1 bg-[var(--color-accent)] mx-auto mt-4 rounded-full"></div>
+      <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+        Más de 853 citaciones en Google Scholar. Investigación enfocada en salud ocupacional, toxicología y salud mental laboral.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {siteConfig.publications.map((pub, i) => (
+        <div class={`card-hover reveal stagger-${(i % 4) + 1} bg-white rounded-xl p-8 border border-[var(--color-primary)]/8 flex flex-col`}>
+          <!-- Journal badge + year -->
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[var(--color-primary-dark)]/5 text-[var(--color-primary)]">
+              {pub.journal}
+            </span>
+            <span class="text-xs text-gray-400 font-mono">{pub.year}</span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg font-bold text-[var(--color-primary-dark)] leading-snug mb-3" style="font-family: 'DM Serif Display', serif;">
+            {pub.title}
+          </h3>
+
+          <!-- Impact description -->
+          <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow">
+            {pub.impact}
+          </p>
+
+          <!-- DOI link -->
+          {pub.doi && (
+            <a
+              href={`https://doi.org/${pub.doi}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="doi-link inline-flex items-center text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-primary)]"
+            >
+              <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+              </svg>
+              DOI: {pub.doi}
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Scholar link -->
+    <div class="text-center mt-12 reveal">
+      <a
+        href={siteConfig.social.scholar}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-hover inline-flex items-center px-8 py-3 bg-[var(--color-primary-dark)] text-white font-semibold rounded-lg text-sm hover:bg-[var(--color-primary)] transition-colors"
+      >
+        <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
+        </svg>
+        Ver perfil en Google Scholar
+      </a>
+    </div>
+  </div>
+</section>

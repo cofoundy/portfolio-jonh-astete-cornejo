@@ -1,0 +1,71 @@
+---
+import Header from "../components/Header.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ExpertiseGrid from "../components/ExpertiseGrid.astro";
+import AcademicPositions from "../components/AcademicPositions.astro";
+import Publications from "../components/Publications.astro";
+import Leadership from "../components/Leadership.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="es" style={`--color-primary-dark:${siteConfig.colors.primaryDark};--color-primary:${siteConfig.colors.primary};--color-primary-light:${siteConfig.colors.primaryLight};--color-accent:${siteConfig.colors.accent};--color-surface:${siteConfig.colors.surface};--color-surface-light:${siteConfig.colors.surfaceLight}`}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={siteConfig.description} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${siteConfig.name} - ${siteConfig.title}`} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/profile.jpg" />
+
+    <!-- Fonts: DM Serif Display (authority) + Source Sans 3 (readability) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>{siteConfig.name} — {siteConfig.title}</title>
+  </head>
+  <body class="bg-[var(--color-surface-light)]">
+    <Header />
+    <main>
+      <HeroSection />
+      <ExpertiseGrid />
+      <AcademicPositions />
+      <Publications />
+      <Leadership />
+    </main>
+    <Footer />
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+
+      const revealOnScroll = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(revealOnScroll, observerOptions);
+
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

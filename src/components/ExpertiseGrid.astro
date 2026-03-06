@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../config";
+
+const iconMap: Record<string, string> = {
+  stethoscope: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3v3.75m4.5-3.75v3.75M9 21h6m-6 0a3 3 0 01-3-3V9a3 3 0 013-3h6a3 3 0 013 3v9a3 3 0 01-3 3m-6 0h6"/><circle cx="15" cy="12" r="1.5"/></svg>`,
+  flask: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M5 14.5l-.25.756a3 3 0 002.672 3.92l.5.063a29.15 29.15 0 008.156 0l.5-.063a3 3 0 002.672-3.92L19 14.5m-14 0h14"/></svg>`,
+  brain: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-3m0-3V9m0 0a3 3 0 110-6 3 3 0 010 6zm-4.5 6a4.5 4.5 0 01-3.186-7.686A3.001 3.001 0 016 4.5a3 3 0 012.25 1.014M16.5 18a4.5 4.5 0 003.186-7.686A3.001 3.001 0 0018 4.5a3 3 0 00-2.25 1.014"/></svg>`,
+  shield: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+  xray: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg>`,
+  academic: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>`,
+};
+---
+
+<section id="expertise" class="bg-[var(--color-surface-light)] py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-3">Áreas de especialización</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-primary-dark)]" style="font-family: 'DM Serif Display', serif;">
+        Expertise
+      </h2>
+      <div class="w-16 h-1 bg-[var(--color-accent)] mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {siteConfig.expertise.map((item, i) => (
+        <div class={`card-hover reveal stagger-${(i % 6) + 1} bg-white rounded-xl p-8 border border-[var(--color-primary)]/8 group`}>
+          <div class="w-14 h-14 rounded-xl bg-[var(--color-primary-dark)]/5 flex items-center justify-center text-[var(--color-primary)] mb-5 group-hover:bg-[var(--color-accent)]/10 group-hover:text-[var(--color-accent)] transition-colors">
+            <Fragment set:html={iconMap[item.icon] || iconMap.stethoscope} />
+          </div>
+          <h3 class="text-lg font-bold text-[var(--color-primary-dark)] mb-3" style="font-family: 'DM Serif Display', serif;">
+            {item.title}
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
